@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:400,400i,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <title>Weather Dashboard</title>
+</head>
+<body class= "flex-column min-100-vh">
+  <header class="hero">
+    <h1 class="app-title"><i class="fas fa-cloud-sun"></i>Weather Dashboard</h1>
+  </header>
+
+  <main class="flex-row justify-space-between">
+    <div class="col-12 col-md-4">
+      <div class="card">
+        <h3 class="card-header">Search for a City:</h3>
+        <input name="cityname" id="cityname" type="text" autofocus="ture">
+        <button type="submit" class="btn"><i class="fas fa-search"></i></button>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-4">
+      <div class="card">
+        <div class="card-body"></div>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-4">
+      <div id="current-city-container" class="current-city">   
+      </div>
+    </div>
+
+    <div class="col-12 col-md-8">
+      <h2 class="subtitle">5-Day Forecast:</h2>
+      <div id="weather-container" class="list-group"></div>
+    </div>
+  </main>
+  
+</body>
+</html>
