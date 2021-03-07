@@ -62,7 +62,7 @@ input {
  
 /* weather info */
 .container {
-  margin: 20px 0px 20px 10px;
+  margin: 20px 0px 30px 10px;
 }
 
 .weather-info-container {
@@ -87,7 +87,11 @@ input {
   background-color: white;
 }
 
-
+.row {
+  display:flex;
+  flex-wrap: nowrap;
+  margin: auto;
+}
 /* HEIGHT / WIDTH UTILS */
 .min-100-vh {
   min-height: 100vh;
@@ -98,16 +102,14 @@ input {
 }
 
 
-/* FLEX CONTENT */
+/*FLEX CONTENT*/
 .flex-row {
   display: flex;
-  flex-wrap: wrap;
 }
 
 .flex-column {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
 }
 
 .justify-space-between {
