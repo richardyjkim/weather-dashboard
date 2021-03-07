@@ -19,6 +19,7 @@ h3 {
   font-weight: 200;
   margin-top: 2vh;
 }
+
 .hero {
   padding: 0;
   background-color: black;
@@ -91,6 +92,14 @@ input {
   display:flex;
   flex-wrap: nowrap;
   margin: auto;
+}
+
+/* citylist */
+.citylist {
+  font-size: 0.8rem;
+  background-color: white;
+  padding: auto;
+  border: solid 1px whitesmoke;
 }
 /* HEIGHT / WIDTH UTILS */
 .min-100-vh {

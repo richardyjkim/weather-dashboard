@@ -3,7 +3,7 @@ let weatherFormEl = document.getElementById("weather-form");
 let cityTermEl = document.getElementById("city-name");
 let weatherContainerEl = document.getElementById("weather-container");
 let searchedCities = JSON.parse(localStorage.getItem("cityname")) || [];
-
+let cityListEl = document.getElementById("city-list-section");
 
 let formSubmitHandler = function (event) {
   let cityName = cityTermEl.value.trim();
@@ -15,11 +15,26 @@ let formSubmitHandler = function (event) {
     cityTermEl.value = "";
     searchedCities.push(cityName);
     localStorage.setItem("cityname", JSON.stringify(searchedCities));
+    displaySearchCity();
   } else {
     alert("Please enter your city");
   }
 };
 
+displaySearchCity = function () {
+  cityListEl.textContent = "";
+  for (let i = 0; i < searchedCities.length; i++) {
+    let cityList = document.createElement("div")
+    cityList.classList = "card citylist flex-row justify-space-evenly";
+    cityList.setAttribute("value", searchedCities[i]);
+    cityList.textContent=searchedCities[i];
+    cityList.addEventListener("click", function () {
+      getWeatherInfo(searchedCities[i]);
+    })
+    console.log(searchedCities[i]);
+    cityListEl.appendChild(cityList);
+  }
+}
 
 let getWeatherInfo = function (cityName) {
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}`;
