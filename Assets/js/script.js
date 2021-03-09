@@ -2,8 +2,10 @@ const API_KEY = "fd94b557d7ee46fb855777883ef6cbcc";
 let weatherFormEl = document.getElementById("weather-form");
 let cityTermEl = document.getElementById("city-name");
 let weatherContainerEl = document.getElementById("weather-container");
+let fivedayContainerEl = document.getElementById("fivedays-container");
 let searchedCities = JSON.parse(localStorage.getItem("cityname")) || [];
 let cityListEl = document.getElementById("city-list-section");
+let clearBtn = document.getElementById("clear-button");
 
 let formSubmitHandler = function (event) {
   let cityName = cityTermEl.value.trim();
@@ -69,7 +71,7 @@ let getFivedayInfo = function (cityName) {
 
 displaySearchCity();
 if(searchedCities.length > 0) {
-  getWeatherInfo(searchedCities[searchedCities.length - 1]);
+  getWeatherInfo(searchedCities[searchedCities.length -1]);
   getFivedayInfo(searchedCities[searchedCities.length -1]);
 }
 
@@ -135,6 +137,7 @@ let displayWeather = function (data, cityName) {
 
 // display 5 days
 let displayFivedays = function (data, cityName) {
+  fivedayContainerEl.classList.remove("display-none");
   let fivedayEl = document.querySelectorAll(".fiveday");
   let fivedayHeaderEl = document.getElementById("fivedayheader")
   fivedayHeaderEl.textContent = "5-Day Forecast: " + data.city.name;
@@ -169,3 +172,9 @@ let displayFivedays = function (data, cityName) {
 
 // displayWeather(weather, cityName);
 weatherFormEl.addEventListener("submit", formSubmitHandler);
+clearBtn.addEventListener("click", function(event) {
+  event.preventDefault();
+  let cityListSectionEl = document.getElementById("city-list-section");
+  cityListSectionEl.classList.add("display-none");
+  localStorage.clear();
+})
