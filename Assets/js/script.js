@@ -37,8 +37,6 @@ displaySearchCity = function () {
   }
 }
 
-
-
 let getWeatherInfo = function (cityName) {
   let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}`;
   fetch(url).then(function (response) {
@@ -69,14 +67,11 @@ let getFivedayInfo = function (cityName) {
   });
 };
 
-
 displaySearchCity();
 if(searchedCities.length > 0) {
   getWeatherInfo(searchedCities[searchedCities.length - 1]);
   getFivedayInfo(searchedCities[searchedCities.length -1]);
 }
-
-
 
 let displayWeather = function (data, cityName) {
   weatherContainerEl.classList.remove("display-none");
@@ -96,7 +91,6 @@ let displayWeather = function (data, cityName) {
   cityTitleEl.appendChild(getWeatherIconEl);
 
   // get weather info
-
   let cityTemperatureInfoEl = document.getElementById("cityTemperatureInfoEl");
   let currentTemperature = Math.floor((data.main.temp - 273.15) * 1.8) + 32 + "°F";
   cityTemperatureInfoEl.textContent = "Temperature: " + currentTemperature; 
@@ -122,6 +116,14 @@ let displayWeather = function (data, cityName) {
       response.json().then(function (data) {
         let currentUvIndex = data.value;
         cityUvIndexEl.textContent = "UV Index: " + currentUvIndex;
+        // check uv index is favorable, moderate, servere
+        if (currentUvIndex < 3) {
+          cityUvIndexEl.setAttribute("class", "badge badge-success");
+        } else if (currentUvIndex >=3 && currentUvIndex < 6) {
+          cityUvIndexEl.setAttribute("class", "badge badge-warning")
+        } else if (currentUvIndex > 6) {
+          cityUvIndexEl.setAttribute("class", "badge badge-danger");
+        }
       });
     } else {
       cityUvIndexEl.textContent = "UV Index: Unkown";
@@ -146,22 +148,24 @@ let displayFivedays = function (data, cityName) {
     fivedaysDateEl.setAttribute("class", "mt-3 mb-0");
     fivedaysDateEl.textContent = fiveDay;
     fivedayEl[i].append(fivedaysDateEl);
+
     // five days icon
     let fivedaysIconEl = document.createElement("img");
     let fivedaysIcon = data.list[fivedaysIndex].weather[0].icon
     fivedaysIconEl.setAttribute("src", `https://openweathermap.org/img/w/${fivedaysIcon}.png`);
     fivedayEl[i].append(fivedaysIconEl);
+
     // fiveday temperature
     let fivedayTempEl = document.createElement("p");
     fivedayTempEl.textContent = "Temp: " + Math.floor(((data.list[fivedaysIndex].main.temp - 273.15) * 1.8) + 32) + "°F";
     fivedayEl[i].append(fivedayTempEl);
+
     // fiveday huminity
     let fivedayHumidEl = document.createElement("p");
     fivedayHumidEl.textContent = "Humidity: " + data.list[fivedaysIndex].main.humidity + "%";
     fivedayEl[i].append(fivedayHumidEl);
   }
 }
-
 
 // displayWeather(weather, cityName);
 weatherFormEl.addEventListener("submit", formSubmitHandler);
