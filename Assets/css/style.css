@@ -91,15 +91,21 @@ input {
 .row {
   display:flex;
   flex-wrap: nowrap;
-  margin: auto;
+  margin: 0px 25px 0px 0px;
 }
 
 /* citylist */
 .citylist {
-  font-size: 0.8rem;
+  font-size: 1.5rem;
   background-color: white;
-  padding: auto;
+  text-indent: 2vh;
   border: solid 1px whitesmoke;
+  margin: 0px 20px 10px;
+}
+
+.citylist:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 /* HEIGHT / WIDTH UTILS */
 .min-100-vh {
@@ -110,6 +116,9 @@ input {
   min-width: 100vw;
 }
 
+.display-none {
+  display: none;
+}
 
 /*FLEX CONTENT*/
 .flex-row {
@@ -154,7 +163,7 @@ input {
 }
 
 
-.col-auto {
+/* .col-auto {
   flex-grow: 1;
 }
 
@@ -409,5 +418,5 @@ input {
   .col-xl-12 {
     flex: 0 0 100%;
   }
-}
+} */
 

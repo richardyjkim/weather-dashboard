@@ -13,16 +13,17 @@
   <title>Weather Dashboard</title>
 </head>
 <!-- title section -->
+
 <body class="flex-column min-100-vh">
   <header class="hero">
     <h1 class="app-title"><i class="fas fa-cloud-sun"></i>Weather Dashboard</h1>
   </header>
-<!-- left city search section -->
+  <!-- left city search section -->
   <main class="flex-row justify-space-between">
     <div class="search-container col-12 col-md-4">
       <div class="search-bar">
         <h3>Search for a City</h3>
-        <form id="weather-form" class="">
+        <form id="weather-form">
           <input id="city-name" name="city-name" type="text">
           <button type="submit" class="btn"><i class="fas fa-search"></i></button>
           <div id="city-container" class="city-group">
@@ -34,16 +35,23 @@
     </div>
     <div class="col-12 col-md-8">
       <!-- right top, current weather info -->
-      <div class="weather-info-container">
-        <div id="weather-container" class="weather-container">
-          <div id=weather-info-container>
+      <div id="weather-container" class="weather-container display-none weather-info-container">
+        <h2 id="cityTitleEl" class="container flex-row align-center">
+          Your City
+        </h2>
+        <div id="weatherEl" class="container flex-row justify-space-between align-center">
+          <div id="weatherInfoEl">
+            <div id="cityTemperatureInfoEl" class="margin-bottom flex-row justify-space-between align-center"></div>
+            <div id="cityHumidityInfoEl" class="margin-bottom flex-row justify-space-between align-center"></div>
+            <div id="cityWindSpeedEl" class="margin-bottom flex-row justify-space-between align-center"></div>
+            <span id="cityUvIndexEl" class="badge badge-danger"></span>
           </div>
         </div>
       </div>
       <!--  right bottom, 5days weather info -->
       <div class="fivedays-info-container">
         <div id="fivedays-container" class="">
-          <h2 class="container">5-Day Forecast:</h2>
+          <h2 class="container" id="fivedayheader">Please enter your city</h2>
           <div class="col-12 col-md-6 justify-space-evenly margin-bottom">
             <div class="row">
               <div class="col-5 fiveday bg-primary text-white ml-2 mb-2 rounded"></div>
