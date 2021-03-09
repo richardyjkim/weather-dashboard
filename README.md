@@ -60,6 +60,10 @@ start manage your weather from today
 - all your search result could be recall back
 - dont wanna see em? clear it all and re searched em again.
 
+![alt text](./screenshot/ss8.png)
+
+- when you come back. we will present you what you have searched right before you left us.
+
 ## Technology
     -HTML
     -CSS
