@@ -173,8 +173,6 @@ let displayFivedays = function (data, cityName) {
 // displayWeather(weather, cityName);
 weatherFormEl.addEventListener("submit", formSubmitHandler);
 clearBtn.addEventListener("click", function(event) {
-  event.preventDefault();
-  let cityListSectionEl = document.getElementById("city-list-section");
-  cityListSectionEl.classList.add("display-none");
   localStorage.clear();
+  location.reload();
 })
