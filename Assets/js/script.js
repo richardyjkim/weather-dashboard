@@ -75,7 +75,7 @@ if(searchedCities.length > 0) {
   getFivedayInfo(searchedCities[searchedCities.length -1]);
 }
 
-let displayWeather = function (data, cityName) {
+let displayWeather = function (data) {
   weatherContainerEl.classList.remove("display-none");
   //  create container for current city weather
   let weatherEl = document.getElementById("weatherEl");
@@ -136,13 +136,14 @@ let displayWeather = function (data, cityName) {
 };
 
 // display 5 days
-let displayFivedays = function (data, cityName) {
+let displayFivedays = function (data) {
   fivedayContainerEl.classList.remove("display-none");
   let fivedayEl = document.querySelectorAll(".fiveday");
   let fivedayHeaderEl = document.getElementById("fivedayheader")
   fivedayHeaderEl.textContent = "5-Day Forecast: " + data.city.name;
   for (let i = 0; i < fivedayEl.length; i++) {
     fivedayEl[i].textContent = "";
+   
     // fivedays dates
     let fivedaysDateEl = document.createElement("p");
     let fivedaysIndex = i * 8 + 4;
@@ -151,7 +152,7 @@ let displayFivedays = function (data, cityName) {
     fivedaysDateEl.setAttribute("class", "mt-3 mb-0");
     fivedaysDateEl.textContent = fiveDay;
     fivedayEl[i].append(fivedaysDateEl);
-
+  
     // five days icon
     let fivedaysIconEl = document.createElement("img");
     let fivedaysIcon = data.list[fivedaysIndex].weather[0].icon
